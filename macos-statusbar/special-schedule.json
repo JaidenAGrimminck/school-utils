@@ -1,0 +1,49 @@
+{
+    "special": {
+        "2024-11-10": [
+            false,
+            {"school": false},
+            {"school": false},
+            false,
+            false,
+            false,
+            false
+        ],
+        "2024-11-24": [
+            false,
+            false,
+            false,
+            false,
+            {"school": false},
+            {"school": false},
+            false
+        ],
+        "2024-12-15": [
+            false,
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            false
+        ],
+        "2024-12-22": [
+            false,
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            false
+        ],
+        "2024-12-29": [
+            false,
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            {"school": false},
+            false
+        ]
+    }
+}

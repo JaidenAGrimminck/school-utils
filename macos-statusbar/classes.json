@@ -1,0 +1,48 @@
+{
+    "aliases": {
+        "A": {
+            "name": "A Block",
+            "color": "#FF0000"
+        },
+        "B": {
+            "name": "B Block",
+            "color": "#00FF00"
+        },
+        "C": {
+            "name": "C Block",
+            "color": "#0000FF"
+        },
+        "D": {
+            "name": "D Block",
+            "color": "#FFFF00"
+        },
+        "E": {
+            "name": "E Block",
+            "color": "#FF00FF"
+        },
+        "F": {
+            "name": "F Block",
+            "color": "#00FFFF"
+        },
+        "G": {
+            "name": "G Block",
+            "color": "#FFFFFF"
+        },
+        "H": {
+            "name": "H Block",
+            "color": "#F0F0F0"
+        },
+        "advisory": {
+            "name": "Advisory",
+            "color": "#000000"
+        },
+        "lunch": {
+            "name": "Lunch",
+            "color": "#000000"
+        },
+        "comm_time": {
+            "name": "Community Time",
+            "color": "#000000"
+        }
+    }
+}

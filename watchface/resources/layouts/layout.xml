@@ -1,0 +1,8 @@
+<resources>
+    <layout id="MainLayout">
+        <label text="Lunch Money" x="center" y="30%" justification="Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER" font="Gfx.FONT_LARGE" color="Gfx.COLOR_DK_GRAY" />
+        <label text="€ -1.00" x="center" y="50%" id="priceLabel" justification="Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_DK_GRAY" />
+
+        <label text="(-1)" x="center" y="80%" id="responsecode" justification="Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER" font="Gfx.FONT_SMALL" color="Gfx.COLOR_DK_GRAY" />
+    </layout>
+</resources>
