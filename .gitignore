@@ -5,3 +5,9 @@ macos-statusbar/.env
 
 __pycache__/
 watchface/bin
+
+macos-statusbar/install
+macos-statusbar/check
+macos-statusbar/*.scpt
+
+*.log

@@ -6,6 +6,7 @@ import datetime
 import copy
 import flask
 import classes
+import sys
 from datetime import timedelta
 
 url = ""
@@ -45,7 +46,7 @@ def loadURL():
 def loadPreferences():
     global preferences
 
-    with open("preferences.json") as f:
+    with open("data/preferences.json") as f:
         data = json.load(f)
 
         preferences = data
@@ -67,7 +68,7 @@ class DisplayOption(rumps.MenuItem):
     def clicked(self, arg1=None, arg2=None, arg3=None, arg4=None):
         preferences["display"][self._key] = not preferences["display"][self._key]
 
-        with open("preferences.json", "w") as f:
+        with open("data/preferences.json", "w") as f:
             json.dump(preferences, f)
 
         #print("Updated display preferences")
@@ -334,8 +335,14 @@ def set_interval(func, sec):
     return t
 
 if __name__ == "__main__":
-    loadURL()
-    loadPreferences()
+    # get arguments
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "test":
+            print("Success!")
+            sys.exit(0)
+    else:
+        loadURL()
+        loadPreferences()
 
-    MAIN_DISPLAY = PriceBarApp()
-    MAIN_DISPLAY.run()
+        MAIN_DISPLAY = PriceBarApp()
+        MAIN_DISPLAY.run()

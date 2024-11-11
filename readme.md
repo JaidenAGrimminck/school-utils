@@ -31,6 +31,25 @@ git clone https://github.com/JaidenAGrimminck/school-utils.git
 
 # Status Bar
 
+## Fast and Easy Way
+
+If you don't want to go through the "developer" process, you can skip a few steps to use the app.
+
+First, open the "Install" application by double clicking on it.
+
+![app](/media/easy/install_pointer.png)
+
+Click "ok" on the prompts until you see the "Installation Successful!"
+> **Note**: If an error occurs, you may have to follow the manual steps below to fix it.
+
+Once successful, you can run the app via double clicking to open the "Run App" app.
+
+![run app](/media/easy/run_app.png)
+
+The app will be running at the top! To safely close the app, under the menu, click "Quit."
+
+![quit app](/media/easy/quit.png)
+
 ## Prerequesites
 
 - Python >=`3.12`
@@ -56,6 +75,7 @@ To run, run the following command:
 python3 main.py
 ```
 
+And let it run in the background!
 
 # Watch Face
 

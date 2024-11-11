@@ -10,22 +10,22 @@ classData = {
 }
 
 """
-Loads the stored class data from the classes.json file
+Loads the stored class data from the .json files in the data folder
 """
 def loadClassesData():
     global classData
 
-    with open("classes.json") as f:
+    with open("data/classes.json") as f:
         data = json.load(f)
 
         classData["classes"] = data["aliases"]
     
-    with open("special-schedule.json") as f:
+    with open("data/special-schedule.json") as f:
         data = json.load(f)
 
         classData["special"] = data["special"]
 
-    with open("schedule.json") as f:
+    with open("data/schedule.json") as f:
         data = json.load(f)
 
         classData["schedule"] = data
