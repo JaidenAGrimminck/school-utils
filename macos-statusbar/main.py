@@ -7,6 +7,8 @@ import copy
 import flask
 import classes
 import sys
+import server
+import webbrowser
 from datetime import timedelta
 
 url = ""
@@ -120,6 +122,7 @@ class PriceBarApp(rumps.App):
             UpdatableMenu("money", lambda: self.updateURL()) if preferences["has_updating_scheme"] else rumps.separator,
             rumps.separator,
             "Update URL" if preferences["has_updating_scheme"] else rumps.separator, 
+            "Refresh",
             rumps.separator, DisplayMenu(), rumps.separator]
 
         self.euroCount = -1
@@ -143,7 +146,7 @@ class PriceBarApp(rumps.App):
 
     def openClassEditor(self):
         # open the class editor
-        print("Opening class editor")
+        webbrowser.open("http://localhost:" + str(preferences["port"]) + "/", new=2)
         pass
 
     @rumps.clicked("Update URL")
@@ -267,27 +270,64 @@ class PriceBarApp(rumps.App):
                 classStr = preferences["text"]["ends_in"]
 
                 classStr = classStr.replace("$CLASS$", cclass["class"]["name"])
-                classStr = classStr.replace("$TIME$", str(diff))
+                
+                splt = str(diff).split(":")
 
-                fullStr = str(classStr)
+                mins = int(splt[1]) + int(splt[0]) * 60
+                seconds = round(int(splt[2]))
+                
+                if seconds < 10:
+                    seconds = "0" + str(seconds)
+
+                fullStr = str(classStr.replace("$TIME$", str(mins) + ":" + str(seconds)))
+
+                if preferences["display"]["per second updates"]:
+                    classStr = classStr.replace("$TIME$", str(mins) + ":" + str(seconds))
+                else:
+                    if (mins == 0):
+                        mins = "<1"
+                    classStr = classStr.replace("$TIME$", str(mins + 1) + "m")
 
                 if preferences["display"]["time only"]:
-                    classStr = str(time)
+                    if preferences["display"]["per second updates"]:
+                        classStr = str(mins) + ":" + str(seconds)
+                    else:
+                        if (mins == 0):
+                            mins = "<1"
+                        else:
+                            mins = str(mins + 1)
+                        classStr = mins + "m"
             else:
                 self.updateClass()
                 classStr = "-:--"
         elif self.nextClass != None:
             time_till = classes.time_difference(self.nextClass["start"], time)
 
+            splt = str(time_till).split(":")
+
+            mins = int(splt[1]) + int(splt[0]) * 60
+            seconds = round(int(splt[2]))
+            
+            if seconds < 10:
+                seconds = "0" + str(seconds)
+
             classStr = preferences["text"]["starts_in"]
 
             classStr = classStr.replace("$CLASS$", self.nextClass["class"]["name"])
-            classStr = classStr.replace("$TIME$", str(time_till))
-
+            classStr = classStr.replace("$TIME$", str(mins) + ":" + str(seconds))
+            
             fullStr = str(classStr)
 
             if preferences["display"]["time only"]:
-                classStr = str(time)
+                if preferences["display"]["per second updates"]:
+                    classStr = classStr.replace("$TIME$", str(mins) + ":" + str(seconds))
+                else:
+                    if (mins == 0):
+                        mins = "<1"
+                    else:
+                        mins = str(mins + 1)
+                    classStr = classStr.replace("$TIME$", mins + "m")
+                
         else:
             if self.day["school"]:
                 classStr = preferences["text"]["no_more_classes"]
@@ -304,6 +344,13 @@ class PriceBarApp(rumps.App):
             snore_phase += 1
             if snore_phase >= len(snores):
                 snore_phase = 0
+        
+        if self.nextClass != None:
+            # check if the current time is greater than the end time of the current class
+            if (self.currentClass != None and time > self.currentClass["end"]):
+                self.updateClass()
+            elif self.currentClass == None and time > self.nextClass["start"]:
+                self.updateClass()
 
         # update the first menu item
         self.menu["time_update"].updateTitle(fullStr)
@@ -326,6 +373,11 @@ class PriceBarApp(rumps.App):
         self.title = preferences["display"]["divider"].join(title)
         pass
 
+    @rumps.clicked("Refresh")
+    def refresh(self, _):
+        self.updateClass()
+
+
 def set_interval(func, sec):
     def func_wrapper():
         set_interval(func, sec)
@@ -343,6 +395,8 @@ if __name__ == "__main__":
     else:
         loadURL()
         loadPreferences()
+
+        server.startServer(preferences["port"], False)
 
         MAIN_DISPLAY = PriceBarApp()
         MAIN_DISPLAY.run()

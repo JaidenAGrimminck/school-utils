@@ -245,7 +245,7 @@ def getClassData():
     return copy.deepcopy(classData)
 
 def time_difference(a=datetime.datetime.now(), b=datetime.datetime.now()):
-    return timedelta(hours=a.hour, minutes=a.minute) - timedelta(hours=b.hour, minutes=b.minute)
+    return timedelta(hours=a.hour, minutes=a.minute, seconds=a.second) - timedelta(hours=b.hour, minutes=b.minute, seconds=b.second)
 
 def dnow():
     return datetime.datetime.now() #(2024, 11, 8, 10, 5, 20)

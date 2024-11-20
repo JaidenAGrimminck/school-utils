@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>School Utils!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/schedule.js"></script>
 </head>
 <body>
-    <div class="">
-
+    <div class="refresh" id="refresh">
+        <span>Save Changes</span>
     </div>
+    <div class="controls">
+        <div onclick="window.schedule.goBackOneDay()">
+            <!-- left, < character -->
+            <span>&lt;</span>
+        </div>
+        <div onclick="window.schedule.goToToday()">
+            <span>Today</span>
+        </div>
+        <div onclick="window.schedule.goForwardOneDay()">
+            <!-- right, > character -->
+            <span>&gt;</span>
+        </div>
+    </div>
+    <div class="info-box">
+        <div id="date">
+            [weekday] • [date]
+        </div>
+    </div>
+    <div class="editor" id="editor">
+        <div class="editor-title">
+            <span>Edit Class</span>
+        </div>
+        <div class="editor-content">
+            <input type="color" class="editor-color">
+            <button class="editor-name">Edit Name</button>
+        </div>
+    </div>
+    <div class="">
+        <div class="schedule">
+            <div class="time">
+            </div>
+            <div class="classes">
+                <div class="class" style="height: 20px; top: 165px;">
+                    <div class="class-name">Math</div>
+                    <div class="class-time">8:00 - 9:00</div>
+                </div>
+                <div class="class" style="height: 20px; top: 205px;">
+                    <div class="class-name">Math</div>
+                    <div class="class-time">8:00 - 9:00</div>
+                </div>
+            </div>
+        </div>
+        <div class="current-time"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -56,6 +56,8 @@ python3 -m pip install -r requirements.txt
 > ```
 > *...if you have any issues.*
 
+You'll also need to rename the `example-data` folder to `data`.
+
 ## To Use
 
 To run, run the following command:

@@ -9,5 +9,6 @@ watchface/bin
 macos-statusbar/install
 macos-statusbar/check
 macos-statusbar/*.scpt
+macos-statusbar/data
 
 *.log

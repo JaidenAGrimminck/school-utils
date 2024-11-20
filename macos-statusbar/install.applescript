@@ -38,6 +38,9 @@ do shell script "rm " & logFile
 -- Remove the install script.
 do shell script "rm ./install"
 
+-- Copy "example-data" folder to a new "data" folder if it doesn't exist.
+do shell script "cp -r example-data data"
+
 -- Then, we're done!
 return "SUCCESS"
 
