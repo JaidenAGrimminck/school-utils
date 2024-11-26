@@ -297,7 +297,7 @@ class PriceBarApp(rumps.App):
                         if (mins == 0):
                             mins = "<1"
                         elif mins != "<1":
-                            mins = str(int(mins) + 1)
+                            mins = str(mins)
                         
                         classStr = mins + "m"
             else:

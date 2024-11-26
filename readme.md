@@ -23,6 +23,10 @@ Featuring:
 - A widget for Garmin watches that can tell me my next class and schedule.
 - A status bar for MacOS that tells me how much money I have on my school card, my next class, and can be customized.
 
+> [!NOTE]
+> The watchface is meant for the Forerunner 985, and meant for a specific system that my school uses.
+> You may need to adjust it if you want to use it.
+
 # To Install
 
 Download or clone the repository via:
@@ -32,6 +36,10 @@ git clone https://github.com/JaidenAGrimminck/school-utils.git
 ```
 
 # Status Bar
+
+![media1](media/class%20one.png)
+![media2](media/class%20two.png)
+![media3](media/edit%20menu.png)
 
 ## Fast and Easy Way
 
@@ -67,6 +75,25 @@ python3 main.py
 ```
 
 And let it run in the background!
+
+> [!WARNING]
+> Sometimes, unexepected errors may occur. Just restart the program, and it should be fine.
+> If the time doesn't seem to update, try restarting the program or click the "refresh" button.
+
+## To edit
+
+Open the status bar and click on the class time in the popup bar. This will open a website. Right click on a class to edit the name or color.
+
+If you want to edit the class schedule, for now, you can open the `data` folder in the status bar folder.
+
+> ![NOTE]
+> This is meant for a school with a rotating block schedule.
+
+- `classes.json` is for the classes you have.
+- `schedule.json` is for the rotation and specific timings.
+- `special-schedule.json` is to add any special holidays. (`false` means no change, btw)
+
+To enable the euro tracker, change `has_updating_scheme` to true in `preferences.json`. This only works if you go to my school, though.
 
 # Watch Face
 
