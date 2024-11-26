@@ -2,6 +2,7 @@ import json
 import datetime
 from datetime import timedelta
 import copy
+import random as rand
 
 classData = {
     "classes": {}, # class aliases
@@ -33,6 +34,18 @@ def loadClassesData():
     #print(classData)
     print("loaded your class data!")
 
+"""
+Saves the class data to the .json files in the data folder
+"""
+def saveClassesData():
+    with open("data/classes.json", "w") as f:
+        json.dump({"aliases": classData["classes"]}, f)
+
+    with open("data/special-schedule.json", "w") as f:
+        json.dump({"special": classData["special"]}, f)
+
+    with open("data/schedule.json", "w") as f:
+        json.dump(classData["schedule"], f)
 
 """
 Gets the last sunday that occurred before the current or given date

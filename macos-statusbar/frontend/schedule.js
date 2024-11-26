@@ -26,6 +26,25 @@ function toggleRefreshDialog() {
     refreshShown = !refreshShown;
 }
 
+function saveChanges() {
+    fetch("/api/schedule/edit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Object.assign({
+            date: {
+                year: window.schedule.viewingDate.getFullYear(),
+                month: window.schedule.viewingDate.getMonth() + 1,
+                day: window.schedule.viewingDate.getDate()
+            }
+        }, editsMade))
+    });
+
+    editsMade = {};
+    toggleRefreshDialog();
+}
+
 class Schedule {
     constructor() {
         this.schedule = [];

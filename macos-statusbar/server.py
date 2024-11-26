@@ -36,6 +36,47 @@ def daySchedule(year, month, day):
         today[i]["end"] = str(block["end"])
     return json.dumps(today)
 
+# /api/schedule/edit post request
+@app.route("/api/schedule/edit", methods=["POST"])
+def editSchedule():
+    data = flask.request.json
+    
+    keys = data.keys()
+    # keys are a list of numbers, where each number is the index of the block of the day to edit.
+    date = data["date"]
+
+    # get the day schedule
+    day = classes.getDaySchedule(datetime.datetime(date["year"], date["month"], date["day"]))
+
+    for key in keys:
+        if key == "date":
+            continue
+
+        key = int(key)
+        block = day[key]
+        className = block["class"]["name"]
+        edits = data[str(key)]
+
+        editingClass = None
+            
+        for classKey in classes.classData["classes"].keys():
+            if classes.classData["classes"][classKey]["name"] == className:
+                editingClass = classes.classData["classes"][classKey]
+                break
+        
+        if editingClass == None:
+            return "false"
+
+        for editKey in edits.keys():
+            if editKey == "class":
+                className = edits[editKey]
+                continue
+
+            editingClass[editKey] = edits[editKey]
+    
+    classes.saveClassesData()
+    return "true"
+
 @app.route("/<path:path>")
 def static_file(path):
     if path == "favicon.ico":

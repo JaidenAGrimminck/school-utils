@@ -1,6 +1,19 @@
 
+const deleteGoogleTranslateExtensionCauseItsAnnoying = false;
+
 const beginningOffset = 10;
 const pixelToHour = 40;
+
+if (deleteGoogleTranslateExtensionCauseItsAnnoying) {
+    window.addEventListener("load", () => {
+        setInterval(() => {
+            if (document.getElementById("gtx-trans") != null) {
+                document.getElementById("gtx-trans").remove();
+            }
+        }, 1)
+    })
+}
+
 
 async function createScheduleItems() {
     const classContainer = document.getElementsByClassName('classes')[0];
@@ -60,6 +73,12 @@ async function createScheduleItems() {
     const date = document.getElementById('date');
 
     date.innerText = window.schedule.viewingDate.toDateString();
+
+    if (window.schedule.viewingDate.toDateString() === new Date().toDateString()) {
+        date.innerText = "Today • " + date.innerText;
+    } else if (window.schedule.viewingDate.toDateString() === new Date(new Date().setDate(new Date().getDate() + 1)).toDateString()) {
+        date.innerText = "Tomorrow • " + date.innerText;
+    }
 }
 
 function to12HourTime(hour) {

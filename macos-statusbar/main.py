@@ -286,7 +286,9 @@ class PriceBarApp(rumps.App):
                 else:
                     if (mins == 0):
                         mins = "<1"
-                    classStr = classStr.replace("$TIME$", str(mins + 1) + "m")
+                    else:
+                        mins = str(mins + 1)
+                    classStr = classStr.replace("$TIME$", mins + "m")
 
                 if preferences["display"]["time only"]:
                     if preferences["display"]["per second updates"]:
@@ -294,8 +296,9 @@ class PriceBarApp(rumps.App):
                     else:
                         if (mins == 0):
                             mins = "<1"
-                        else:
-                            mins = str(mins + 1)
+                        elif mins != "<1":
+                            mins = str(int(mins) + 1)
+                        
                         classStr = mins + "m"
             else:
                 self.updateClass()
