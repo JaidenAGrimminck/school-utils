@@ -88,7 +88,7 @@ Open the status bar and click on the class time in the popup bar. This will open
 
 If you want to edit the class schedule, for now, you can open the `data` folder in the status bar folder.
 
-> ![NOTE]
+> [!NOTE]
 > This is meant for a school with a rotating block schedule.
 
 - `classes.json` is for the classes you have.
