@@ -42,6 +42,10 @@ git clone https://github.com/JaidenAGrimminck/school-utils.git
 ![media2](media/class%20two.png)
 ![media3](media/edit%20menu.png)
 
+
+https://github.com/user-attachments/assets/470071c4-7e3d-457c-b288-73519ab2dcce
+
+
 ## Fast and Easy Way
 
 If you don't want to go through the "developer" process, you can skip a few steps to use the app.
