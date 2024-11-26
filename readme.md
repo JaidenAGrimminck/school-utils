@@ -11,7 +11,7 @@ This repo is a collection of some tools that I built for school.
 Made by Jaiden.
 </p>
 
-> ![NOTE]
+> [!NOTE]
 > If you want to quickly install the status bar for MacOS, read the following guide [here](install.md).
 
 # About
