@@ -59,11 +59,12 @@ Navigate to the repository and run:
 python3 -m pip install -r requirements.txt
 ```
 
-> *Note: You may also need to run...*
+> [!NOTE]
+> You may also need to run...
 > ```bash
 > python3 -m pip install datetime
 > ```
-> *...if you have any issues.*
+> ...if you have any issues.
 
 You'll also need to rename the `example-data` folder to `data`.
 
